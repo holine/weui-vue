@@ -1,5 +1,6 @@
 <template>
-  <div class="weui-cells__group" :class="[extClass, outerClass, childClass] | parseClassName" :aria-role="ariaRole">
+  <div class="weui-cells__group" :class="[extClass, outerClass, childClass] | parseClassName" :aria-role="ariaRole"
+    @click="$emit('click', $event)">
     <div v-if="title" class="weui-cells__title">{{ title }}</div>
     <div class="weui-cells weui-cells_after-title" :class="{
       'weui-cells_checkbox': checkboxCount > 0 && checkboxIsMulti
