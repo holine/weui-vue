@@ -1,5 +1,5 @@
 <template>
-  <div class="weui-vtabs">
+  <div ref="weui-vtabs" class="weui-vtabs">
     <div class="weui-vtabs-bar__wrp" :class="tabBarClass | parseClassName">
       <scroll-view scroll-y class="weui-vtabs-bar__scrollview" :scroll-into-view="`weui-vtabs-item__${currentView}`">
         <div class="weui-vtabs-bar__content">
@@ -60,6 +60,16 @@ export default {
       this.scrollTabBar(_activeTab);
     }
   },
+  created() {
+    this.$watch(() => ({
+      heightRecords: this.heightRecords,
+      activeTab: this.activeTab
+    }), () => this.setData({
+      contentScrollTop: this.heightRecords[this.activeTab - 1] || 0
+    }), {
+      immediate: true
+    });
+  },
   relations: {
     '../vtabs-content/index': {
       type: 'child',
@@ -103,20 +113,15 @@ export default {
       this.setData({ currentView: currentView });
     },
     handleTabClick(e) {
-      var heightRecords = this.heightRecords;
       var index = e.currentTarget.dataset.index * 1;
-      var contentScrollTop = heightRecords[index - 1] || 0;
       this.triggerEvent('tabclick', { index: index });
       this.$emit('update:activeTab', index)
-      this.setData({
-        contentScrollTop: contentScrollTop
-      });
     },
     handleContentScroll(e) {
       var heightRecords = this.heightRecords;
       if (heightRecords.length === 0) return;
       var length = this.vtabs.length;
-      var scrollTop = e.currentTarget.scrollTop;
+      var scrollTop = e.currentTarget.scrollTop + 0.5;
       var index = 0;
       if (scrollTop >= heightRecords[0]) {
         for (var i = 1; i < length; i++) {
@@ -126,9 +131,11 @@ export default {
           }
         }
       }
-      if (index !== this.activeTab) {
-        this.triggerEvent('change', { index: index * 1 });
-        this.$emit('update:activeTab', index * 1)
+      if (this.$refs['weui-vtabs'].getBoundingClientRect().height + e.currentTarget.scrollTop + 0.5 < heightRecords[heightRecords.length - 1]) {
+        if (index !== this.activeTab) {
+          this.triggerEvent('change', { index: index * 1 });
+          this.$emit('update:activeTab', index * 1)
+        }
       }
     }
   }
