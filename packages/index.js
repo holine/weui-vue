@@ -1,6 +1,7 @@
 import WeuiBadge from "./badge"
 import WeuiCell from "./cell"
 import WeuiCells from "./cells"
+import WeuiDialog from "./dialog"
 import WeuiIcon from "./icon"
 import WeuiImage from "./image"
 import WeuiRadio from "./radio"
@@ -18,6 +19,7 @@ const components = [
   WeuiBadge,
     WeuiCell,
     WeuiCells,
+    WeuiDialog,
     WeuiIcon,
     WeuiImage,
     WeuiRadio,
@@ -46,6 +48,7 @@ export {
     WeuiBadge,
     WeuiCell,
     WeuiCells,
+    WeuiDialog,
     WeuiIcon,
     WeuiImage,
     WeuiRadio,
