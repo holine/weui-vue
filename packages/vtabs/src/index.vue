@@ -10,9 +10,8 @@
                 color: activeTab === index ? tabActiveTextColor : tabInactiveTextColor,
                 'border-left-color': activeTab === index ? tabLineColor : tabInactiveBgColor,
               }" @click="handleTabClick">
-              <div class="weui-vtabs-bar__title" :class="(activeTab === index ? activeClass : '') | parseClassName">
-                {{ item.title }}
-              </div>
+              <div class="weui-vtabs-bar__title" :class="(activeTab === index ? activeClass : '') | parseClassName"
+                v-text="item.title" />
             </div>
           </template>
         </div>
@@ -166,7 +165,9 @@ export default {
   display: inline-block;
   width: 110px;
   height: 55px;
-  border-left: 4px solid transparent
+  border-left: 4px solid transparent;
+  padding-right: 4px;
+  box-sizing: border-box;
 }
 
 .weui-vtabs-bar__title {
