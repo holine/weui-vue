@@ -2,13 +2,13 @@
   "name": "@holine/weui-vue",
   "version": "0.1.18",
   "private": false,
-  "main": "lib/weui.umd.min.js",
+  "main": "packages/index.js",
   "files": [
-    "lib"
+    "packages"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "node build.js; vue-cli-service build --target lib --name weui --dest lib packages/index.js; rm -rf /Users/holine/workspace/weixin/cpalace/node_modules/@holine;mkdir -p /Users/holine/workspace/weixin/cpalace/node_modules/@holine/weui-vue;cp -r /Users/holine/workspace/@holine/weui-vue/lib /Users/holine/workspace/weixin/cpalace/node_modules/@holine/weui-vue; cp /Users/holine/workspace/@holine/weui-vue/package.json /Users/holine/workspace/weixin/cpalace/node_modules/@holine/weui-vue"
+    "build": "node build.js; vue-cli-service build --target lib --name weui --dest lib packages/index.js;"
   },
   "dependencies": {
     "throttle-debounce": "^1.0.1",
