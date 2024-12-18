@@ -1,6 +1,6 @@
 {
   "name": "@holine/weui-vue",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "private": false,
   "main": "packages/index.js",
   "files": [
