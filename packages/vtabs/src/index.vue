@@ -3,17 +3,15 @@
     <div class="weui-vtabs-bar__wrp" :class="tabBarClass | parseClassName">
       <scroll-view scroll-y class="weui-vtabs-bar__scrollview" :scroll-into-view="`weui-vtabs-item__${currentView}`">
         <div class="weui-vtabs-bar__content">
-          <template v-for="(item, index) in vtabs">
-            <div :key="item.title" :id="`weui-vtabs-item__${index}`" class="weui-vtabs-bar__item" :data-index="index"
-              :style="{
-                'background-color': activeTab === index ? tabActiveBgColor : tabInactiveBgColor,
-                color: activeTab === index ? tabActiveTextColor : tabInactiveTextColor,
-                'border-left-color': activeTab === index ? tabLineColor : tabInactiveBgColor,
-              }" @click="handleTabClick">
-              <div class="weui-vtabs-bar__title" :class="(activeTab === index ? activeClass : '') | parseClassName"
-                v-text="item.title" />
-            </div>
-          </template>
+          <div v-for="(item, index) in vtabs" :key="item.title" :id="`weui-vtabs-item__${index}`"
+            class="weui-vtabs-bar__item" :data-index="index" :style="{
+              'background-color': activeTab === index ? tabActiveBgColor : tabInactiveBgColor,
+              color: activeTab === index ? tabActiveTextColor : tabInactiveTextColor,
+              'border-left-color': activeTab === index ? tabLineColor : tabInactiveBgColor,
+            }" @click="handleTabClick">
+            <div class="weui-vtabs-bar__title" :class="(activeTab === index ? activeClass : '') | parseClassName"
+              v-text="item.title"></div>
+          </div>
         </div>
       </scroll-view>
     </div>

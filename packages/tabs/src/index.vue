@@ -3,18 +3,15 @@
     <div class="weui-tabs-bar__wrp">
       <scroll-view scroll-x :scroll-into-view="`item_${currentView}`" :scroll-with-animation="animation">
         <div class="weui-tabs-bar__content">
-          <template v-for="(item, index) in tabs">
-            <div :key="item.title" :id="`item_${index}`" class="weui-tabs-bar__item" :style="{
-              backgroundColor: tabBackgroundColor,
-              color: activeTab === index ? tabActiveTextColor : tabInactiveTextColor,
-            }" @click="handleTabClick" :data-index="index">
-              <div class="weui-tabs-bar__title"
-                :class="[tabClass, activeTab === index ? activeClass : ''] | parseClassName"
-                :style="{ borderBottomColor: activeTab === index ? tabUnderlineColor : 'transparent' }">
-                {{ item.title }}
-              </div>
-            </div>
-          </template>
+          <div v-for="(item, index) in tabs" :key="item.title" :id="`item_${index}`" class="weui-tabs-bar__item" :style="{
+            backgroundColor: tabBackgroundColor,
+            color: activeTab === index ? tabActiveTextColor : tabInactiveTextColor,
+          }" @click="handleTabClick" :data-index="index">
+            <div class="weui-tabs-bar__title"
+              :class="[tabClass, activeTab === index ? activeClass : ''] | parseClassName"
+              :style="{ borderBottomColor: activeTab === index ? tabUnderlineColor : 'transparent' }"
+              v-text="item.title"></div>
+          </div>
         </div>
       </scroll-view>
     </div>
