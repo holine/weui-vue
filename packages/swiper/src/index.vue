@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import throttle from 'throttle-debounce/throttle';
 export default {
   props: {
     current: {
